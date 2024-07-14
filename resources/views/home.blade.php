@@ -1,23 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }} You are normal user.
-                </div>
+    <div class="container mt-5">
+        <h1>Set Follow-Up Date and Time</h1>
+        <form method="POST" action="{{ route('followup.store') }}">
+            @csrf
+            <div class="form-group">
+                <label for="follow_up_at">Follow-Up Date and Time</label>
+                <input type="datetime-local" class="form-control" id="follow_up_at" name="follow_up_at" required>
             </div>
-        </div>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
     </div>
-</div>
 @endsection
